@@ -1,26 +1,33 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Netflix 2.0</title>
 </head>
+
 <body>
     <main>
         <h1>Quem está assitindo?</h1>
-        <div class="profiles">
+        <section aria-label="Perfis disponíveis">
+            <nav class="profiles">
 
-            <div class="profile">
-                <img src="./assets/Perfil1.png" alt="Perfil 1">
-                <p>Perfil 1</p>
-            </div>
-
-            <div class="profile">
-                <img src="./assets/perfil2.jpg" alt="Perfil 2">
-                <p>Perfil 2</p>
-            </div>
-
-        </div>
+                <a href="#" class="profile">
+                    <figure>
+                        <img src="./assets/Perfil1.png" alt="Perfil 1">
+                        <figcaption>Perfil 1</figcaption>
+                    </figure>
+                </a>
+                <figure>
+                    <a href="#" class="profile">
+                        <img src="./assets/perfil2.jpg" alt="Perfil 2">
+                        <figcaption>Perfil 2</figcaption>
+                </figure>
+                </a>
+            </nav>
+        </section>
     </main>
 </body>
+
 </html>
