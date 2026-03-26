@@ -10,7 +10,7 @@ body {
     background-color: #000000;
     color: #ffffff;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -29,16 +29,28 @@ h1 {
     font-weight: 400;
 }
 
-.profiles {
+.profiles-group {
+    list-style: none;
     display: flex;
     justify-content: center;
     gap: 2rem;
     flex-wrap: wrap;
 }
 
+.profiles-list {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+.profile-item {
+    list-style: none;
+}
+
 .profile {
     text-decoration: none;
     color: #ffffff;
+    display: block;
     transition: transform 0.3s ease;
 }
 
@@ -47,7 +59,6 @@ h1 {
 }
 
 figure {
-    display: inline-block;
     text-align: center;
 }
 
@@ -76,8 +87,18 @@ figcaption {
         font-size: 2rem;
     }
 
-    .profiles {
-        gap: 1rem;
+    .profiles-group {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+    }
+
+    .profiles-list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+        justify-items: center;
     }
 
     img {
