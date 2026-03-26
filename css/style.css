@@ -1,5 +1,18 @@
 /* Estilos base inspirados no Netflix */
 
+:root {
+    --bg-color: #000000;
+    --text-color: #ffffff;
+    --accent-color: #e50914;
+    --card-hover-scale: 1.1;
+}
+
+.light-mode {
+    --bg-color: #f5f5f5;
+    --text-color: #333333;
+    --accent-color: #b9090b;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -7,13 +20,75 @@
 }
 
 body {
-    background-color: #000000;
-    color: #ffffff;
+    background-color: var(--bg-color);
+    color: var(--text-color);
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     min-height: 100vh;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Toggle Switch de Tema */
+.theme-switch-wrapper {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    z-index: 1000;
+}
+
+.theme-switch {
+    display: inline-block;
+    height: 34px;
+    position: relative;
+    width: 60px;
+}
+
+.theme-switch input {
+    display: none;
+}
+
+.slider {
+    background-color: #ccc;
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    background-color: #fff;
+    bottom: 4px;
+    content: "";
+    height: 26px;
+    left: 4px;
+    position: absolute;
+    transition: .4s;
+    width: 26px;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #e50914;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+.theme-switch-wrapper em {
+    margin-left: 10px;
+    font-size: 0.9rem;
+    font-style: normal;
+    font-weight: bold;
 }
 
 main {
@@ -49,13 +124,13 @@ h1 {
 
 .profile {
     text-decoration: none;
-    color: #ffffff;
+    color: var(--text-color);
     display: block;
     transition: transform 0.3s ease;
 }
 
 .profile:hover {
-    transform: scale(1.1);
+    transform: scale(var(--card-hover-scale));
 }
 
 figure {
@@ -72,7 +147,7 @@ img {
 }
 
 .profile:hover img {
-    border-color: #e50914;
+    border-color: var(--accent-color);
 }
 
 figcaption {
@@ -85,6 +160,25 @@ figcaption {
 @media (max-width: 768px) {
     h1 {
         font-size: 2rem;
+    }
+
+    .theme-switch-wrapper {
+        top: 10px;
+        right: 10px;
+    }
+
+    .theme-switch {
+        height: 28px;
+        width: 50px;
+    }
+
+    .slider:before {
+        height: 20px;
+        width: 20px;
+    }
+
+    input:checked + .slider:before {
+        transform: translateX(22px);
     }
 
     .profiles-group {
