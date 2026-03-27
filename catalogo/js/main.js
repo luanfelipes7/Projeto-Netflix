@@ -1,0 +1,27 @@
+import { profileData } from './data.js';
+import { createCarousel } from './components/Carousel.js';
+
+document.addEventListener('DOMContentLoaded', () => {
+    const nomePerfil = localStorage.getItem('perfilAtivoNome');
+    const imagemPerfil = localStorage.getItem('perfilAtivoImagem');
+
+    if (nomePerfil && imagemPerfil) {
+        const kidsLink = document.querySelector('.kids-link');
+        const profileIcon = document.querySelector('.profile-icon');
+        
+        if (kidsLink) kidsLink.textContent = nomePerfil;
+        if (profileIcon) profileIcon.src = imagemPerfil;
+    }
+
+    const container = document.getElementById('main-content');
+    
+    if (container) {
+        // Busca as categorias específicas do perfil ou usa as de "Jessica" como padrão
+        const categories = (profileData[nomePerfil] || profileData["Jessica"]).categories;
+        
+        categories.forEach(category => {
+            const carousel = createCarousel(category);
+            container.appendChild(carousel);
+        });
+    }
+});

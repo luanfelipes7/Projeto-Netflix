@@ -29,3 +29,30 @@ function updateStatusText() {
         themeText.textContent = 'Modo Claro';
     }
 }
+
+// Adicionar funcionalidade para seleção de perfis
+document.addEventListener('DOMContentLoaded', () => {
+    const profiles = document.querySelectorAll('.profile');
+    
+    profiles.forEach(profile => {
+        profile.addEventListener('click', (e) => {
+            e.preventDefault(); // Previne o comportamento padrão do link
+            
+            const img = profile.querySelector('img');
+            const figcaption = profile.querySelector('figcaption');
+            
+            if (img && figcaption) {
+                const profileData = {
+                    name: figcaption.textContent,
+                    image: img.src
+                };
+                
+                localStorage.setItem('perfilAtivoNome', profileData.name);
+                localStorage.setItem('perfilAtivoImagem', profileData.image);
+                
+                // Redirecionar para o catálogo
+                window.location.href = './catalogo/catalogo.html';
+            }
+        });
+    });
+});
